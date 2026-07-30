@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>⚠️ Vi phạm bảo mật</title>
+    <title>✅ Mở khóa thành công</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
@@ -26,39 +26,39 @@
             overflow: hidden;
         }
 
-        /* ----- NỀN ĐỘNG ĐỎ ----- */
+        /* ----- NỀN ĐỘNG XANH ----- */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(255, 50, 50, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(255, 80, 80, 0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 100%, rgba(200, 50, 50, 0.06) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 50%, rgba(74, 222, 128, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(74, 222, 128, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(74, 222, 128, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Orb đỏ */
-        .orb-red {
+        /* Orb xanh */
+        .orb-green {
             position: fixed;
             border-radius: 50%;
             filter: blur(80px);
             pointer-events: none;
             z-index: 0;
         }
-        .orb-red-1 {
+        .orb-green-1 {
             width: 500px;
             height: 500px;
-            background: rgba(255, 50, 50, 0.05);
+            background: rgba(74, 222, 128, 0.05);
             top: -150px;
             right: -100px;
             animation: floatOrb 25s ease-in-out infinite alternate;
         }
-        .orb-red-2 {
+        .orb-green-2 {
             width: 400px;
             height: 400px;
-            background: rgba(255, 80, 80, 0.04);
+            background: rgba(74, 222, 128, 0.04);
             bottom: -100px;
             left: -100px;
             animation: floatOrb 20s ease-in-out infinite alternate-reverse;
@@ -70,7 +70,7 @@
         }
 
         /* ----- CONTAINER CHÍNH ----- */
-        .security-container {
+        .success-container {
             position: relative;
             z-index: 1;
             width: 100%;
@@ -80,8 +80,8 @@
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border-radius: 40px;
             padding: 40px 32px 36px;
-            border: 1px solid rgba(255, 50, 50, 0.08);
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 50, 50, 0.02), inset 0 0 60px rgba(255, 50, 50, 0.02);
+            border: 1px solid rgba(74, 222, 128, 0.08);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(74, 222, 128, 0.02), inset 0 0 60px rgba(74, 222, 128, 0.02);
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -90,31 +90,31 @@
             to { transform: translateY(0) scale(1); opacity: 1; }
         }
 
-        /* ----- ICON CẢNH BÁO ----- */
-        .alert-icon {
+        /* ----- ICON THÀNH CÔNG ----- */
+        .success-icon {
             width: 100px;
             height: 100px;
             border-radius: 60px;
-            background: rgba(255, 50, 50, 0.06);
-            border: 1px solid rgba(255, 50, 50, 0.08);
+            background: rgba(74, 222, 128, 0.06);
+            border: 1px solid rgba(74, 222, 128, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             position: relative;
-            animation: pulseAlert 2s ease-in-out infinite;
+            animation: pulseSuccess 2s ease-in-out infinite;
         }
 
-        @keyframes pulseAlert {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 50, 50, 0.05); }
-            50% { transform: scale(1.04); box-shadow: 0 0 60px rgba(255, 50, 50, 0.1); }
+        @keyframes pulseSuccess {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(74, 222, 128, 0.05); }
+            50% { transform: scale(1.04); box-shadow: 0 0 60px rgba(74, 222, 128, 0.1); }
         }
 
-        .alert-icon .ring-pulse {
+        .success-icon .ring-pulse {
             position: absolute;
             inset: -6px;
             border-radius: 60px;
-            border: 1.5px solid rgba(255, 50, 50, 0.06);
+            border: 1.5px solid rgba(74, 222, 128, 0.06);
             animation: ringPulse 2s ease-in-out infinite;
         }
 
@@ -123,27 +123,27 @@
             50% { transform: scale(1.15); opacity: 0.6; }
         }
 
-        .alert-icon i {
+        .success-icon i {
             font-size: 48px;
-            color: #ff4444;
-            filter: drop-shadow(0 0 30px rgba(255, 50, 50, 0.15));
+            color: #4ade80;
+            filter: drop-shadow(0 0 30px rgba(74, 222, 128, 0.15));
         }
 
         /* ----- TIÊU ĐỀ ----- */
-        .alert-title {
+        .success-title {
             text-align: center;
             margin-bottom: 8px;
         }
 
-        .alert-title h1 {
+        .success-title h1 {
             font-size: 28px;
             font-weight: 700;
-            color: #ff4444;
+            color: #4ade80;
             letter-spacing: -0.5px;
-            text-shadow: 0 0 40px rgba(255, 50, 50, 0.05);
+            text-shadow: 0 0 40px rgba(74, 222, 128, 0.05);
         }
 
-        .alert-title .sub {
+        .success-title .sub {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.2);
             font-weight: 400;
@@ -152,44 +152,44 @@
         }
 
         /* ----- NỘI DUNG ----- */
-        .alert-content {
+        .success-content {
             margin: 24px 0 28px;
-            background: rgba(255, 50, 50, 0.02);
-            border: 1px solid rgba(255, 50, 50, 0.03);
+            background: rgba(74, 222, 128, 0.02);
+            border: 1px solid rgba(74, 222, 128, 0.03);
             border-radius: 24px;
             padding: 20px 24px;
         }
 
-        .alert-content .warning-text {
+        .success-content .success-text {
             font-size: 15px;
             color: rgba(255, 255, 255, 0.6);
             line-height: 1.8;
             font-weight: 400;
         }
 
-        .alert-content .warning-text .highlight {
-            color: #ff6b6b;
+        .success-content .success-text .highlight {
+            color: #4ade80;
             font-weight: 600;
         }
 
-        .alert-content .warning-text .highlight-gold {
+        .success-content .success-text .highlight-gold {
             color: #ffd700;
             font-weight: 600;
         }
 
-        .alert-content .warning-text i {
-            color: #ff4444;
+        .success-content .success-text i {
+            color: #4ade80;
             margin-right: 6px;
         }
 
-        /* ----- DANH SÁCH VI PHẠM ----- */
-        .violation-list {
+        /* ----- DANH SÁCH APPLE DUYỆT ----- */
+        .approval-list {
             margin: 16px 0 0;
             padding: 0;
             list-style: none;
         }
 
-        .violation-list li {
+        .approval-list li {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -200,38 +200,55 @@
             font-weight: 400;
         }
 
-        .violation-list li:last-child {
+        .approval-list li:last-child {
             border-bottom: none;
         }
 
-        .violation-list li .v-icon {
+        .approval-list li .a-icon {
             width: 30px;
             height: 30px;
             border-radius: 60px;
-            background: rgba(255, 50, 50, 0.04);
+            background: rgba(74, 222, 128, 0.04);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
-            color: #ff6b6b;
+            color: #4ade80;
             flex-shrink: 0;
         }
 
-        .violation-list li .v-text {
+        .approval-list li .a-text {
             flex: 1;
         }
 
-        .violation-list li .v-status {
+        .approval-list li .a-status {
             font-size: 11px;
-            color: #ff6b6b;
+            color: #ffd700;
             font-weight: 500;
-            background: rgba(255, 50, 50, 0.04);
+            background: rgba(255, 215, 0, 0.04);
             padding: 2px 12px;
             border-radius: 60px;
-            border: 1px solid rgba(255, 50, 50, 0.04);
+            border: 1px solid rgba(255, 215, 0, 0.04);
+            animation: blinkStatus 1.5s ease-in-out infinite;
         }
 
-        /* ----- NÚT YÊU CẦU ADMIN ----- */
+        @keyframes blinkStatus {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .approval-list li .a-status.done {
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.04);
+            background: rgba(74, 222, 128, 0.04);
+            animation: none;
+        }
+
+        .approval-list li .a-status.done i {
+            color: #4ade80;
+        }
+
+        /* ----- NÚT ----- */
         .action-buttons {
             display: flex;
             gap: 14px;
@@ -239,10 +256,10 @@
             flex-wrap: wrap;
         }
 
-        .btn-request {
+        .btn-primary {
             flex: 1;
             padding: 16px 20px;
-            background: linear-gradient(135deg, #ff4444, #cc2222);
+            background: linear-gradient(135deg, #4ade80, #22b85a);
             border: none;
             border-radius: 28px;
             color: #fff;
@@ -257,17 +274,13 @@
             min-width: 140px;
         }
 
-        .btn-request:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px -8px rgba(255, 50, 50, 0.2);
+            box-shadow: 0 12px 40px -8px rgba(74, 222, 128, 0.2);
         }
 
-        .btn-request:active {
+        .btn-primary:active {
             transform: scale(0.97);
-        }
-
-        .btn-request i {
-            font-size: 18px;
         }
 
         .btn-secondary {
@@ -332,11 +345,11 @@
             text-align: right;
         }
 
-        .device-info .info-value .red-dot {
+        .device-info .info-value .green-dot {
             display: inline-block;
             width: 6px;
             height: 6px;
-            background: #ff4444;
+            background: #4ade80;
             border-radius: 60px;
             margin-right: 6px;
             animation: pulseDot 1.5s ease-in-out infinite;
@@ -348,23 +361,23 @@
         }
 
         /* ----- FOOTER ----- */
-        .alert-footer {
+        .success-footer {
             text-align: center;
             padding-top: 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.02);
         }
 
-        .alert-footer .footer-text {
+        .success-footer .footer-text {
             font-size: 13px;
             color: rgba(255, 255, 255, 0.08);
             letter-spacing: 0.5px;
         }
 
-        .alert-footer .footer-text i {
-            color: rgba(255, 50, 50, 0.1);
+        .success-footer .footer-text i {
+            color: rgba(74, 222, 128, 0.1);
         }
 
-        /* ----- TOAST THÔNG BÁO ----- */
+        /* ----- TOAST ----- */
         .toast-message {
             position: fixed;
             bottom: 40px;
@@ -398,44 +411,39 @@
             width: 28px;
             height: 28px;
             border-radius: 60px;
-            background: rgba(255, 50, 50, 0.08);
+            background: rgba(74, 222, 128, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ff6b6b;
-            font-size: 14px;
-        }
-
-        .toast-message.success .toast-icon {
-            background: rgba(74, 222, 128, 0.08);
             color: #4ade80;
+            font-size: 14px;
         }
 
         /* ----- RESPONSIVE ----- */
         @media (max-width: 520px) {
-            .security-container {
+            .success-container {
                 padding: 28px 20px 24px;
                 border-radius: 32px;
             }
 
-            .alert-icon {
+            .success-icon {
                 width: 80px;
                 height: 80px;
             }
 
-            .alert-icon i {
+            .success-icon i {
                 font-size: 36px;
             }
 
-            .alert-title h1 {
+            .success-title h1 {
                 font-size: 22px;
             }
 
-            .alert-content {
+            .success-content {
                 padding: 16px 18px;
             }
 
-            .alert-content .warning-text {
+            .success-content .success-text {
                 font-size: 14px;
             }
 
@@ -443,7 +451,7 @@
                 flex-direction: column;
             }
 
-            .btn-request, .btn-secondary {
+            .btn-primary, .btn-secondary {
                 padding: 14px 16px;
                 font-size: 15px;
                 min-width: unset;
@@ -470,61 +478,62 @@
                 bottom: 24px;
             }
 
-            .orb-red-1, .orb-red-2 { display: none; }
+            .orb-green-1, .orb-green-2 { display: none; }
         }
     </style>
 </head>
 <body>
 
     <!-- NỀN ĐỘNG -->
-    <div class="orb-red orb-red-1"></div>
-    <div class="orb-red orb-red-2"></div>
+    <div class="orb-green orb-green-1"></div>
+    <div class="orb-green orb-green-2"></div>
 
     <!-- ===== CONTAINER CHÍNH ===== -->
-    <div class="security-container">
+    <div class="success-container">
 
-        <!-- ICON CẢNH BÁO -->
-        <div class="alert-icon">
+        <!-- ICON THÀNH CÔNG -->
+        <div class="success-icon">
             <div class="ring-pulse"></div>
-            <i class="fas fa-shield-halved"></i>
+            <i class="fas fa-check-circle"></i>
         </div>
 
         <!-- TIÊU ĐỀ -->
-        <div class="alert-title">
-            <h1>⚠️ Vi phạm bảo mật</h1>
-            <div class="sub">Thiết bị của bạn đã bị khóa</div>
+        <div class="success-title">
+            <h1>✅ Mở khóa thành công</h1>
+            <div class="sub">Thiết bị của bạn đã được kích hoạt lại</div>
         </div>
 
-        <!-- NỘI DUNG CẢNH BÁO -->
-        <div class="alert-content">
-            <div class="warning-text">
+        <!-- NỘI DUNG -->
+        <div class="success-content">
+            <div class="success-text">
                 <p>
-                    <i class="fas fa-circle-exclamation"></i>
-                    Hệ thống phát hiện <span class="highlight">hành vi bất thường</span> từ thiết bị của bạn.
-                    Để đảm bảo an toàn, thiết bị đã bị <span class="highlight">tạm thời khóa</span>.
+                    <i class="fas fa-circle-check"></i>
+                    Yêu cầu gỡ khóa của bạn đã được <span class="highlight">phê duyệt</span>.
+                    Thiết bị đang được <span class="highlight">Apple</span> xác minh lại.
                 </p>
 
-                <ul class="violation-list">
+                <ul class="approval-list">
                     <li>
-                        <span class="v-icon"><i class="fas fa-code"></i></span>
-                        <span class="v-text">Phát hiện công cụ can thiệp</span>
-                        <span class="v-status">⚠️</span>
+                        <span class="a-icon"><i class="fas fa-shield"></i></span>
+                        <span class="a-text">Xác minh bảo mật</span>
+                        <span class="a-status"><i class="fas fa-spinner fa-spin"></i> Đang duyệt</span>
                     </li>
                     <li>
-                        <span class="v-icon"><i class="fas fa-network-wired"></i></span>
-                        <span class="v-text">IP bất thường / Proxy</span>
-                        <span class="v-status">⚠️</span>
+                        <span class="a-icon"><i class="fas fa-apple"></i></span>
+                        <span class="a-text">Apple xác nhận</span>
+                        <span class="a-status"><i class="fas fa-spinner fa-spin"></i> Đang xử lý</span>
                     </li>
                     <li>
-                        <span class="v-icon"><i class="fas fa-clock"></i></span>
-                        <span class="v-text">Đăng nhập nhiều lần thất bại</span>
-                        <span class="v-status">⚠️</span>
+                        <span class="a-icon"><i class="fas fa-check-circle"></i></span>
+                        <span class="a-text">Thiết bị an toàn</span>
+                        <span class="a-status done"><i class="fas fa-check"></i> Đã xác nhận</span>
                     </li>
                 </ul>
 
                 <p style="margin-top:14px;">
-                    <i class="fas fa-envelope" style="color:#ffd700;"></i>
-                    Vui lòng <span class="highlight-gold">liên hệ Admin</span> để được <span class="highlight">gỡ khóa</span> và xác minh danh tính.
+                    <i class="fas fa-clock" style="color:#ffd700;"></i>
+                    <span class="highlight-gold">Thời gian chờ:</span> Hệ thống sẽ tự động kích hoạt trong ít phút.
+                    Vui lòng <span class="highlight-gold">không tắt</span> thiết bị.
                 </p>
             </div>
         </div>
@@ -548,16 +557,16 @@
                 <span class="info-value" id="deviceTime">Đang tải...</span>
             </div>
             <div class="info-item" style="grid-column: 1 / -1; border-bottom: none; justify-content: center; padding-top: 4px;">
-                <span class="info-value" style="font-size:11px; color:rgba(255,50,50,0.15);">
-                    <span class="red-dot"></span> Trạng thái: <span style="color:#ff4444;">Bị khóa</span>
+                <span class="info-value" style="font-size:11px; color:rgba(74,222,128,0.15);">
+                    <span class="green-dot"></span> Trạng thái: <span style="color:#4ade80;">Đang được Apple duyệt</span>
                 </span>
             </div>
         </div>
 
         <!-- NÚT HÀNH ĐỘNG -->
         <div class="action-buttons">
-            <button class="btn-request" id="requestBtn">
-                <i class="fas fa-paper-plane"></i> Yêu cầu gỡ khóa
+            <button class="btn-primary" id="checkBtn">
+                <i class="fas fa-rotate"></i> Kiểm tra trạng thái
             </button>
             <a href="#" class="btn-secondary" id="contactAdmin">
                 <i class="fas fa-user-shield"></i> Liên hệ Admin
@@ -565,9 +574,9 @@
         </div>
 
         <!-- FOOTER -->
-        <div class="alert-footer">
+        <div class="success-footer">
             <div class="footer-text">
-                <i class="fas fa-lock"></i> Bảo mật hệ thống · Vui lòng liên hệ Admin để được hỗ trợ
+                <i class="fas fa-shield-halved"></i> Bảo mật bởi Apple · Đang xác minh thiết bị
             </div>
         </div>
     </div>
@@ -575,7 +584,7 @@
     <!-- ===== TOAST ===== -->
     <div id="toast" class="toast-message">
         <div class="toast-icon"><i class="fas fa-check"></i></div>
-        <span id="toast-text">Đã gửi yêu cầu</span>
+        <span id="toast-text">Đã cập nhật</span>
     </div>
 
     <script>
@@ -584,17 +593,15 @@
 
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toast-text');
-            const requestBtn = document.getElementById('requestBtn');
+            const checkBtn = document.getElementById('checkBtn');
             const contactAdmin = document.getElementById('contactAdmin');
 
             // ===== LẤY THÔNG TIN THIẾT BỊ =====
             function getDeviceInfo() {
-                // Tên thiết bị
                 const deviceName = navigator.userAgentData ?
                     navigator.userAgentData.platform || 'Không xác định' :
                     navigator.platform || 'Không xác định';
 
-                // Trình duyệt
                 const browser = (() => {
                     const ua = navigator.userAgent;
                     if (ua.includes('Chrome')) return 'Chrome';
@@ -604,7 +611,6 @@
                     return 'Khác';
                 })();
 
-                // Thời gian
                 const now = new Date();
                 const timeStr = now.toLocaleString('vi-VN', {
                     day: '2-digit',
@@ -615,7 +621,6 @@
                     second: '2-digit'
                 });
 
-                // IP (lấy từ API)
                 fetch('https://api.ipify.org?format=json')
                     .then(res => res.json())
                     .then(data => {
@@ -635,7 +640,7 @@
             // ===== TOAST =====
             let toastTimer = null;
 
-            function showToast(message, icon = '🔐', type = '') {
+            function showToast(message, icon = '✅', type = '') {
                 if (toastTimer) {
                     clearTimeout(toastTimer);
                     toast.classList.remove('show');
@@ -650,13 +655,12 @@
                 }, 2500);
             }
 
-            // ===== NÚT YÊU CẦU GỠ KHÓA =====
-            requestBtn.addEventListener('click', function() {
+            // ===== NÚT KIỂM TRA TRẠNG THÁI =====
+            checkBtn.addEventListener('click', function() {
                 const btn = this;
                 const originalText = btn.innerHTML;
 
-                // Hiệu ứng loading
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang kiểm tra...';
                 btn.disabled = true;
                 btn.style.opacity = '0.7';
 
@@ -664,26 +668,32 @@
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                     btn.style.opacity = '1';
-                    showToast('Đã gửi yêu cầu gỡ khóa đến Admin!', '✅', 'success');
-                }, 1500);
+                    const statuses = [
+                        'Đang xác minh với Apple...',
+                        'Apple đang kiểm tra thiết bị...',
+                        'Thiết bị đang được duyệt...',
+                        'Trạng thái: Đang chờ Apple phê duyệt'
+                    ];
+                    const random = statuses[Math.floor(Math.random() * statuses.length)];
+                    showToast(random, '🔄');
+                }, 1800);
             });
 
             // ===== LIÊN HỆ ADMIN =====
             contactAdmin.addEventListener('click', function(e) {
                 e.preventDefault();
                 showToast('📱 Liên hệ Admin: Zalo 0845.232.8164', '💬');
-                // Có thể mở Zalo: window.open('https://zalo.me/08452328164', '_blank');
             });
 
-            // ===== HIỆU ỨNG LẮC NẾU CLICK VÀO THÔNG TIN =====
-            document.querySelectorAll('.violation-list li').forEach(item => {
+            // ===== HIỆU ỨNG CLICK VÀO DANH SÁCH =====
+            document.querySelectorAll('.approval-list li').forEach(item => {
                 item.addEventListener('click', function() {
-                    const text = this.querySelector('.v-text')?.textContent || 'Vi phạm';
-                    showToast(`⚠️ ${text}`, '🚨');
+                    const text = this.querySelector('.a-text')?.textContent || 'Trạng thái';
+                    showToast(`📋 ${text}`, '🔍');
                 });
             });
 
-            console.log('✅ Trang báo lỗi bảo mật đã sẵn sàng');
+            console.log('✅ Trang mở khóa thành công đã sẵn sàng');
         })();
     </script>
 
