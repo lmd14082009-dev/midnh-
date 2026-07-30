@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⚠️ Vi phạm bảo mật</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0e1a;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ----- NỀN ĐỘNG ĐỎ ----- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(255, 50, 50, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 80, 80, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(200, 50, 50, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Orb đỏ */
+        .orb-red {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .orb-red-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 50, 50, 0.05);
+            top: -150px;
+            right: -100px;
+            animation: floatOrb 25s ease-in-out infinite alternate;
+        }
+        .orb-red-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 80, 80, 0.04);
+            bottom: -100px;
+            left: -100px;
+            animation: floatOrb 20s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 40px) scale(1.2); }
+        }
+
+        /* ----- CONTAINER CHÍNH ----- */
+        .security-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 540px;
+            background: rgba(12, 17, 31, 0.75);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-radius: 40px;
+            padding: 40px 32px 36px;
+            border: 1px solid rgba(255, 50, 50, 0.08);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 50, 50, 0.02), inset 0 0 60px rgba(255, 50, 50, 0.02);
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(40px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        /* ----- ICON CẢNH BÁO ----- */
+        .alert-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            background: rgba(255, 50, 50, 0.06);
+            border: 1px solid rgba(255, 50, 50, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            animation: pulseAlert 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseAlert {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 50, 50, 0.05); }
+            50% { transform: scale(1.04); box-shadow: 0 0 60px rgba(255, 50, 50, 0.1); }
+        }
+
+        .alert-icon .ring-pulse {
+            position: absolute;
+            inset: -6px;
+            border-radius: 60px;
+            border: 1.5px solid rgba(255, 50, 50, 0.06);
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0.6; }
+        }
+
+        .alert-icon i {
+            font-size: 48px;
+            color: #ff4444;
+            filter: drop-shadow(0 0 30px rgba(255, 50, 50, 0.15));
+        }
+
+        /* ----- TIÊU ĐỀ ----- */
+        .alert-title {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .alert-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff4444;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 40px rgba(255, 50, 50, 0.05);
+        }
+
+        .alert-title .sub {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 400;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* ----- NỘI DUNG ----- */
+        .alert-content {
+            margin: 24px 0 28px;
+            background: rgba(255, 50, 50, 0.02);
+            border: 1px solid rgba(255, 50, 50, 0.03);
+            border-radius: 24px;
+            padding: 20px 24px;
+        }
+
+        .alert-content .warning-text {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .alert-content .warning-text .highlight {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .alert-content .warning-text .highlight-gold {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .alert-content .warning-text i {
+            color: #ff4444;
+            margin-right: 6px;
+        }
+
+        /* ----- DANH SÁCH VI PHẠM ----- */
+        .violation-list {
+            margin: 16px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .violation-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .violation-list li:last-child {
+            border-bottom: none;
+        }
+
+        .violation-list li .v-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 60px;
+            background: rgba(255, 50, 50, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #ff6b6b;
+            flex-shrink: 0;
+        }
+
+        .violation-list li .v-text {
+            flex: 1;
+        }
+
+        .violation-list li .v-status {
+            font-size: 11px;
+            color: #ff6b6b;
+            font-weight: 500;
+            background: rgba(255, 50, 50, 0.04);
+            padding: 2px 12px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 50, 50, 0.04);
+        }
+
+        /* ----- NÚT YÊU CẦU ADMIN ----- */
+        .action-buttons {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-request {
+            flex: 1;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #ff4444, #cc2222);
+            border: none;
+            border-radius: 28px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 140px;
+        }
+
+        .btn-request:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px -8px rgba(255, 50, 50, 0.2);
+        }
+
+        .btn-request:active {
+            transform: scale(0.97);
+        }
+
+        .btn-request i {
+            font-size: 18px;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 140px;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ----- THÔNG TIN THIẾT BỊ ----- */
+        .device-info {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+
+        .device-info .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
+        }
+
+        .device-info .info-item:last-child,
+        .device-info .info-item:nth-last-child(2) {
+            border-bottom: none;
+        }
+
+        .device-info .info-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.15);
+            font-weight: 400;
+        }
+
+        .device-info .info-value {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .device-info .info-value .red-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #ff4444;
+            border-radius: 60px;
+            margin-right: 6px;
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ----- FOOTER ----- */
+        .alert-footer {
+            text-align: center;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .alert-footer .footer-text {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.08);
+            letter-spacing: 0.5px;
+        }
+
+        .alert-footer .footer-text i {
+            color: rgba(255, 50, 50, 0.1);
+        }
+
+        /* ----- TOAST THÔNG BÁO ----- */
+        .toast-message {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9) translateY(20px);
+            background: rgba(10, 14, 26, 0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 14px 32px;
+            border-radius: 60px;
+            color: #cdd6ff;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: 0 20px 50px -12px #000000cc;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            z-index: 999;
+            letter-spacing: 0.2px;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1) translateY(0);
+        }
+
+        .toast-message .toast-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 60px;
+            background: rgba(255, 50, 50, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b6b;
+            font-size: 14px;
+        }
+
+        .toast-message.success .toast-icon {
+            background: rgba(74, 222, 128, 0.08);
+            color: #4ade80;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 520px) {
+            .security-container {
+                padding: 28px 20px 24px;
+                border-radius: 32px;
+            }
+
+            .alert-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .alert-icon i {
+                font-size: 36px;
+            }
+
+            .alert-title h1 {
+                font-size: 22px;
+            }
+
+            .alert-content {
+                padding: 16px 18px;
+            }
+
+            .alert-content .warning-text {
+                font-size: 14px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn-request, .btn-secondary {
+                padding: 14px 16px;
+                font-size: 15px;
+                min-width: unset;
+            }
+
+            .device-info {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .device-info .info-item {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.01);
+            }
+
+            .device-info .info-item:last-child {
+                border-bottom: none;
+            }
+
+            .toast-message {
+                font-size: 13px;
+                padding: 12px 20px;
+                white-space: normal;
+                max-width: 90%;
+                bottom: 24px;
+            }
+
+            .orb-red-1, .orb-red-2 { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NỀN ĐỘNG -->
+    <div class="orb-red orb-red-1"></div>
+    <div class="orb-red orb-red-2"></div>
+
+    <!-- ===== CONTAINER CHÍNH ===== -->
+    <div class="security-container">
+
+        <!-- ICON CẢNH BÁO -->
+        <div class="alert-icon">
+            <div class="ring-pulse"></div>
+            <i class="fas fa-shield-halved"></i>
+        </div>
+
+        <!-- TIÊU ĐỀ -->
+        <div class="alert-title">
+            <h1>⚠️ Vi phạm bảo mật</h1>
+            <div class="sub">Thiết bị của bạn đã bị khóa</div>
+        </div>
+
+        <!-- NỘI DUNG CẢNH BÁO -->
+        <div class="alert-content">
+            <div class="warning-text">
+                <p>
+                    <i class="fas fa-circle-exclamation"></i>
+                    Hệ thống phát hiện <span class="highlight">hành vi bất thường</span> từ thiết bị của bạn.
+                    Để đảm bảo an toàn, thiết bị đã bị <span class="highlight">tạm thời khóa</span>.
+                </p>
+
+                <ul class="violation-list">
+                    <li>
+                        <span class="v-icon"><i class="fas fa-code"></i></span>
+                        <span class="v-text">Phát hiện công cụ can thiệp</span>
+                        <span class="v-status">⚠️</span>
+                    </li>
+                    <li>
+                        <span class="v-icon"><i class="fas fa-network-wired"></i></span>
+                        <span class="v-text">IP bất thường / Proxy</span>
+                        <span class="v-status">⚠️</span>
+                    </li>
+                    <li>
+                        <span class="v-icon"><i class="fas fa-clock"></i></span>
+                        <span class="v-text">Đăng nhập nhiều lần thất bại</span>
+                        <span class="v-status">⚠️</span>
+                    </li>
+                </ul>
+
+                <p style="margin-top:14px;">
+                    <i class="fas fa-envelope" style="color:#ffd700;"></i>
+                    Vui lòng <span class="highlight-gold">liên hệ Admin</span> để được <span class="highlight">gỡ khóa</span> và xác minh danh tính.
+                </p>
+            </div>
+        </div>
+
+        <!-- THÔNG TIN THIẾT BỊ -->
+        <div class="device-info" id="deviceInfo">
+            <div class="info-item">
+                <span class="info-label"><i class="fas fa-desktop"></i> Thiết bị</span>
+                <span class="info-value" id="deviceName">Đang tải...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label"><i class="fas fa-globe"></i> IP</span>
+                <span class="info-value" id="deviceIP">Đang tải...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label"><i class="fas fa-browser"></i> Trình duyệt</span>
+                <span class="info-value" id="deviceBrowser">Đang tải...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label"><i class="fas fa-clock"></i> Thời gian</span>
+                <span class="info-value" id="deviceTime">Đang tải...</span>
+            </div>
+            <div class="info-item" style="grid-column: 1 / -1; border-bottom: none; justify-content: center; padding-top: 4px;">
+                <span class="info-value" style="font-size:11px; color:rgba(255,50,50,0.15);">
+                    <span class="red-dot"></span> Trạng thái: <span style="color:#ff4444;">Bị khóa</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- NÚT HÀNH ĐỘNG -->
+        <div class="action-buttons">
+            <button class="btn-request" id="requestBtn">
+                <i class="fas fa-paper-plane"></i> Yêu cầu gỡ khóa
+            </button>
+            <a href="#" class="btn-secondary" id="contactAdmin">
+                <i class="fas fa-user-shield"></i> Liên hệ Admin
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="alert-footer">
+            <div class="footer-text">
+                <i class="fas fa-lock"></i> Bảo mật hệ thống · Vui lòng liên hệ Admin để được hỗ trợ
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast" class="toast-message">
+        <div class="toast-icon"><i class="fas fa-check"></i></div>
+        <span id="toast-text">Đã gửi yêu cầu</span>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            const requestBtn = document.getElementById('requestBtn');
+            const contactAdmin = document.getElementById('contactAdmin');
+
+            // ===== LẤY THÔNG TIN THIẾT BỊ =====
+            function getDeviceInfo() {
+                // Tên thiết bị
+                const deviceName = navigator.userAgentData ?
+                    navigator.userAgentData.platform || 'Không xác định' :
+                    navigator.platform || 'Không xác định';
+
+                // Trình duyệt
+                const browser = (() => {
+                    const ua = navigator.userAgent;
+                    if (ua.includes('Chrome')) return 'Chrome';
+                    if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
+                    if (ua.includes('Firefox')) return 'Firefox';
+                    if (ua.includes('Edge')) return 'Edge';
+                    return 'Khác';
+                })();
+
+                // Thời gian
+                const now = new Date();
+                const timeStr = now.toLocaleString('vi-VN', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+
+                // IP (lấy từ API)
+                fetch('https://api.ipify.org?format=json')
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('deviceIP').textContent = data.ip;
+                    })
+                    .catch(() => {
+                        document.getElementById('deviceIP').textContent = 'Không xác định';
+                    });
+
+                document.getElementById('deviceName').textContent = deviceName;
+                document.getElementById('deviceBrowser').textContent = browser;
+                document.getElementById('deviceTime').textContent = timeStr;
+            }
+
+            getDeviceInfo();
+
+            // ===== TOAST =====
+            let toastTimer = null;
+
+            function showToast(message, icon = '🔐', type = '') {
+                if (toastTimer) {
+                    clearTimeout(toastTimer);
+                    toast.classList.remove('show');
+                }
+                toast.className = 'toast-message';
+                if (type) toast.classList.add(type);
+                toastText.textContent = `${icon} ${message}`;
+                toast.classList.add('show');
+                toastTimer = setTimeout(() => {
+                    toast.classList.remove('show');
+                    toastTimer = null;
+                }, 2500);
+            }
+
+            // ===== NÚT YÊU CẦU GỠ KHÓA =====
+            requestBtn.addEventListener('click', function() {
+                const btn = this;
+                const originalText = btn.innerHTML;
+
+                // Hiệu ứng loading
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    showToast('Đã gửi yêu cầu gỡ khóa đến Admin!', '✅', 'success');
+                }, 1500);
+            });
+
+            // ===== LIÊN HỆ ADMIN =====
+            contactAdmin.addEventListener('click', function(e) {
+                e.preventDefault();
+                showToast('📱 Liên hệ Admin: Zalo 0845.232.8164', '💬');
+                // Có thể mở Zalo: window.open('https://zalo.me/08452328164', '_blank');
+            });
+
+            // ===== HIỆU ỨNG LẮC NẾU CLICK VÀO THÔNG TIN =====
+            document.querySelectorAll('.violation-list li').forEach(item => {
+                item.addEventListener('click', function() {
+                    const text = this.querySelector('.v-text')?.textContent || 'Vi phạm';
+                    showToast(`⚠️ ${text}`, '🚨');
+                });
+            });
+
+            console.log('✅ Trang báo lỗi bảo mật đã sẵn sàng');
+        })();
+    </script>
+
+</body>
+</html>
